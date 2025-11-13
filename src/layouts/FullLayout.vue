@@ -1,13 +1,38 @@
 <script setup>
-// Your script here
+import Header from './Header.vue'
+import Footer from './Footer.vue'
 </script>
 
 <template>
-    <div>
+    <div class="full-layout">
+        <Header />
 
+        <main class="site-main">
+            <div class="container">
+                <router-view />
+            </div>
+        </main>
+
+        <Footer />
     </div>
 </template>
 
-<style lang="scss" scoped>
-/* Your styles here */
+<style scoped lang="scss">
+.full-layout {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.site-main {
+    flex: 1 0 auto;
+    padding: 32px 0;
+    background: #fff;
+}
 </style>

@@ -3,8 +3,9 @@
 </script>
 
 <template>
-  <div>
-    12312312312
+  <div class="main-content">
+    <h1>Welcome to Honda</h1>
+    <p>This is the homepage.</p>
   </div>
 </template>
 

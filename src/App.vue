@@ -1,9 +1,9 @@
 <script setup>
+import FullLayout from './layouts/FullLayout.vue'
 </script>
 
 <template>
-    <router-view>
-    </router-view>
+    <FullLayout />
 </template>
 
 <style scoped></style>
