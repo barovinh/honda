@@ -1,11 +1,13 @@
 <script setup>
 import Header from './Header.vue'
 import Footer from './Footer.vue'
+import OneTimePopup from '@/components/OneTimePopup.vue'
 </script>
 
 <template>
     <div class="full-layout">
         <Header />
+        <OneTimePopup />
 
         <main class="site-main">
             <div class="container">
