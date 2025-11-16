@@ -20,17 +20,26 @@ const formValid = computed(() => nameValid.value && phoneValid.value && emailVal
 async function submitForm() {
     if (!formValid.value || isSending.value) return
     isSending.value = true
+    const SERVICE_ID = import.meta.env.VITE_SERVICE_ID || ''
+    const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID || ''
+    const USER_ID = import.meta.env.VITE_USER_ID || ''
+
+    console.log('Using EmailJS config:', { SERVICE_ID, TEMPLATE_ID, USER_ID })
+    if (!SERVICE_ID || !TEMPLATE_ID || !USER_ID) {
+        toastMessage.value = 'Missing email configuration. Please set env keys.'
+        toastVisible.value = true
+        isSending.value = false
+        setTimeout(() => (toastVisible.value = false), 4000)
+        return
+    }
 
     // Prepare payload for EmailJS REST API
-    // Replace the placeholders below with your actual values:
-    // - YOUR_SERVICE_ID
-    // - YOUR_TEMPLATE_ID
-    // - YOUR_USER_ID (public key)
     const payload = {
-        service_id: 'YOUR_SERVICE_ID',
-        template_id: 'YOUR_TEMPLATE_ID',
-        user_id: 'YOUR_USER_ID',
+        service_id: SERVICE_ID,
+        template_id: TEMPLATE_ID,
+        user_id: USER_ID,
         template_params: {
+            title: 'Phản hồi khách hàng',
             name: name.value,
             phone: phone.value,
             email: email.value
@@ -38,15 +47,15 @@ async function submitForm() {
     }
 
     try {
-        // const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(payload)
-        // })
+        const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
 
-        // if (!res.ok) {
-        //     throw new Error('Email send failed')
-        // }
+        if (!res.ok) {
+            throw new Error('Email send failed')
+        }
 
         toastMessage.value = 'Submit successfully'
         toastVisible.value = true
