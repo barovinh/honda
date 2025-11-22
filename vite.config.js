@@ -9,7 +9,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   // Base path for the built assets. If you host at https://<user>.github.io/<repo>/
   // set this to '/<repo>/'. For local or root domain use '/'.
-  base: '/honda/',
+  base: '/hondaTienGiang/',
   plugins: [tailwindcss(), vue(), vueDevTools()],
   resolve: {
     alias: {
