@@ -142,6 +142,8 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+@use "sass:color";
+
 $primary: #C8102E;
 /* Honda red */
 $accent: #0b84ff;
@@ -178,7 +180,7 @@ $accent: #0b84ff;
 }
 
 .popup-hero {
-    background: linear-gradient(90deg, $primary 0%, darken($primary, 6%) 100%);
+    background: linear-gradient(90deg, $primary 0%, color.scale($primary, $lightness: 6%) 100%);
     color: #fff;
     padding: 18px 20px;
 }
