@@ -14,7 +14,7 @@ const routes = [
 
 const router = createRouter({
   // Use hash history to avoid server-side 404s on GitHub Pages
-  history: createWebHashHistory(),
+  history: createWebHistory('/hondaTienGiang/'), // <-- base path phải trùng với vite.config.js
   routes
 })
 
