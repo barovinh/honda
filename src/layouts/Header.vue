@@ -8,17 +8,16 @@ function toggle() { open.value = !open.value }
     <header class="site-header" :class="{ opened: open }">
         <div class="container header-inner">
             <div class="brand">
-                <a href="/">
+                <router-link to="/">
                     <img src="https://www.honda.com.vn/images/logo_honda_v1.png?v=20251114" alt="HONDA Việt Nam"
                         class="brand-logo">
-                </a>
+                </router-link>
             </div>
 
             <nav class="nav" :class="{ open: open }" aria-label="Main navigation">
-                <a class="nav-link" href="/">Trang chủ</a>
-                <a class="nav-link" href="/oto">Ô tô</a>
-                <a class="nav-link" href="/xe-may">Xe máy</a>
-                <a class="nav-link" href="/contact">Liên hệ</a>
+                <router-link class="nav-link" to="/">Trang chủ</router-link>
+                <router-link class="nav-link" to="/oto">Ô tô</router-link>
+                <router-link class="nav-link" to="/contact">Liên hệ</router-link>
             </nav>
 
             <div class="header-actions">
